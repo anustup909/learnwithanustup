@@ -1921,3 +1921,29 @@ body.dark-mode .store-btn {
         text-align: center;
     }
 }
+
+/* --- Floating Feedback Shortcut Button --- */
+.floating-feedback-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 84px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.45);
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.floating-feedback-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 114, 255, 0.65);
+}
