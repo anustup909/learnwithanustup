@@ -527,6 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.confetti({ particleCount: 70, spread: 60, origin: { y: 0.8 } });
             }
             if (emailRecipient) emailRecipient.innerText = email;
+            
+            const emailDirectLink = document.getElementById('emailDirectLink');
+            if (emailDirectLink) {
+                emailDirectLink.href = `mailto:mailrivu.in@gmail.com?subject=Learn%20with%20Anustup%20Subscription&body=Hi%20Anustup,%20I%20subscribed%20with%20email:%20${encodeURIComponent(email)}`;
+            }
+
             if (emailModal) emailModal.classList.add('active');
 
             showToast("📩 Dispatching email to mailrivu.in@gmail.com...");
