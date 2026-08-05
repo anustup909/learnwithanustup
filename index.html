@@ -29,19 +29,21 @@
 
     <!-- Top Announcement Banner with Crafting Hammer & Liquid Filling Heart -->
     <div style="background: rgba(15, 23, 42, 0.95); padding: 14px 16px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.15); z-index: 1001; position: relative;">
-        <div class="craft-banner-wrapper">
-            <p class="custom-thanks-heading">CRAFT IT WITH YOUR OWN HAND .</p>
-            <div class="craft-interactive-widget">
-                <span class="interactive-liquid-heart" id="interactiveHeartTop" title="Heart filling with red liquid!">
-                    <svg class="heart-svg-base" viewBox="0 0 24 24" width="28" height="28">
+        <div style="display: inline-flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <p style="font-size: 1.35rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); margin: 0;">
+                CRAFT IT WITH YOUR OWN HAND .
+            </p>
+            <div style="display: inline-flex; align-items: center; gap: 12px;">
+                <span class="interactive-liquid-heart" id="interactiveHeartTop" onclick="triggerHammerStrike('Top')" title="Heart filling with red liquid!" style="position: relative; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; width: 30px; height: 30px;">
+                    <svg viewBox="0 0 24 24" width="30" height="30" style="position: absolute; top: 0; left: 0; fill: rgba(255, 0, 85, 0.25);">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
-                    <svg class="heart-svg-fill" id="heartLiquidFillTop" viewBox="0 0 24 24" width="28" height="28">
+                    <svg id="heartLiquidFillTop" viewBox="0 0 24 24" width="30" height="30" style="position: absolute; top: 0; left: 0; fill: #ff0044; filter: drop-shadow(0 0 10px #ff0044) drop-shadow(0 0 20px #ff0055); clip-path: inset(100% 0 0 0); transition: clip-path 0.25s ease;">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
                 </span>
-                <button class="craft-hammer-btn" id="craftHammerBtnTop" title="Tap hammer repeatedly to fill heart with love!">
-                    <i class="fa-solid fa-hammer hammer-icon" id="hammerIconTop"></i>
+                <button onclick="triggerHammerStrike('Top')" title="Tap hammer repeatedly to fill heart with love!" style="background: transparent; border: none; cursor: pointer; padding: 4px; outline: none; display: inline-flex; align-items: center;">
+                    <i class="fa-solid fa-hammer hammer-icon" id="hammerIconTop" style="font-size: 1.8rem; color: #ffb703; filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.8)); transition: transform 0.15s ease;"></i>
                 </button>
             </div>
         </div>
@@ -711,19 +713,21 @@
                 </div>
             </div>
             <div class="container text-center" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.15);">
-                <div class="craft-banner-wrapper">
-                    <p class="custom-thanks-heading">CRAFT IT WITH YOUR OWN HAND .</p>
-                    <div class="craft-interactive-widget">
-                        <span class="interactive-liquid-heart" id="interactiveHeart" title="Heart filling with red liquid!">
-                            <svg class="heart-svg-base" viewBox="0 0 24 24" width="28" height="28">
+                <div style="display: inline-flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                    <p style="font-size: 1.35rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); margin: 0;">
+                        CRAFT IT WITH YOUR OWN HAND .
+                    </p>
+                    <div style="display: inline-flex; align-items: center; gap: 12px;">
+                        <span class="interactive-liquid-heart" id="interactiveHeart" onclick="triggerHammerStrike('Bottom')" title="Heart filling with red liquid!" style="position: relative; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; width: 30px; height: 30px;">
+                            <svg viewBox="0 0 24 24" width="30" height="30" style="position: absolute; top: 0; left: 0; fill: rgba(255, 0, 85, 0.25);">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                             </svg>
-                            <svg class="heart-svg-fill" id="heartLiquidFill" viewBox="0 0 24 24" width="28" height="28">
+                            <svg id="heartLiquidFill" viewBox="0 0 24 24" width="30" height="30" style="position: absolute; top: 0; left: 0; fill: #ff0044; filter: drop-shadow(0 0 10px #ff0044) drop-shadow(0 0 20px #ff0055); clip-path: inset(100% 0 0 0); transition: clip-path 0.25s ease;">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                             </svg>
                         </span>
-                        <button class="craft-hammer-btn" id="craftHammerBtn" title="Tap hammer repeatedly to fill heart with love!">
-                            <i class="fa-solid fa-hammer hammer-icon" id="hammerIcon"></i>
+                        <button onclick="triggerHammerStrike('Bottom')" title="Tap hammer repeatedly to fill heart with love!" style="background: transparent; border: none; cursor: pointer; padding: 4px; outline: none; display: inline-flex; align-items: center;">
+                            <i class="fa-solid fa-hammer hammer-icon" id="hammerIcon" style="font-size: 1.8rem; color: #ffb703; filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.8)); transition: transform 0.15s ease;"></i>
                         </button>
                     </div>
                 </div>
@@ -737,7 +741,41 @@
         <span>Feedback</span>
     </a>
 
+    <!-- Direct Inline Hammer Strike Script -->
+    <script>
+        var strikeCounts = { Top: 0, Bottom: 0 };
+        function triggerHammerStrike(type) {
+            var key = type === 'Top' ? 'Top' : 'Bottom';
+            strikeCounts[key]++;
+            var max = 5;
+            var fillPct = Math.max(0, 100 - (strikeCounts[key] / max) * 100);
+            
+            var fillEl = document.getElementById(type === 'Top' ? 'heartLiquidFillTop' : 'heartLiquidFill');
+            var heartEl = document.getElementById(type === 'Top' ? 'interactiveHeartTop' : 'interactiveHeart');
+            var hammerIcon = document.getElementById(type === 'Top' ? 'hammerIconTop' : 'hammerIcon');
+            
+            if (fillEl) fillEl.style.clipPath = 'inset(' + fillPct + '% 0 0 0)';
+            
+            if (hammerIcon) {
+                hammerIcon.style.transform = 'scale(1.4) rotate(-45deg)';
+                setTimeout(function() {
+                    hammerIcon.style.transform = 'scale(1) rotate(0deg)';
+                }, 180);
+            }
+            
+            if (strikeCounts[key] >= max) {
+                if (heartEl) {
+                    heartEl.style.filter = 'drop-shadow(0 0 20px #ff0044) drop-shadow(0 0 40px #ff007f)';
+                    heartEl.style.transform = 'scale(1.3)';
+                }
+                if (window.confetti) {
+                    window.confetti({ particleCount: 120, spread: 90, origin: { y: 0.9 } });
+                }
+            }
+        }
+    </script>
+
     <!-- JavaScript File -->
-    <script src="script.js?v=10.0"></script>
+    <script src="script.js?v=11.0"></script>
 </body>
 </html>
