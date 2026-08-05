@@ -651,34 +651,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 17. Interactive Liquid Filling Heart Emoji ---
-    const interactiveHeart = document.getElementById('interactiveHeart');
-    const heartLiquidFill = document.getElementById('heartLiquidFill');
+    const hearts = [
+        { el: document.getElementById('interactiveHeart'), fill: document.getElementById('heartLiquidFill') },
+        { el: document.getElementById('interactiveHeartTop'), fill: document.getElementById('heartLiquidFillTop') }
+    ];
 
-    if (interactiveHeart && heartLiquidFill) {
-        let heartTaps = 0;
-        const maxHeartTaps = 5;
+    hearts.forEach(h => {
+        if (h.el && h.fill) {
+            let heartTaps = 0;
+            const maxHeartTaps = 5;
 
-        interactiveHeart.addEventListener('click', () => {
-            heartTaps++;
-            const fillPercentage = Math.max(0, 100 - (heartTaps / maxHeartTaps) * 100);
-            heartLiquidFill.style.clipPath = `inset(${fillPercentage}% 0 0 0)`;
+            h.el.addEventListener('click', () => {
+                heartTaps++;
+                const fillPercentage = Math.max(0, 100 - (heartTaps / maxHeartTaps) * 100);
+                h.fill.style.clipPath = `inset(${fillPercentage}% 0 0 0)`;
 
-            playCelebrationSound();
+                playCelebrationSound();
 
-            if (heartTaps >= maxHeartTaps) {
-                interactiveHeart.classList.add('full-glow');
-                if (window.confetti) {
-                    window.confetti({
-                        particleCount: 120,
-                        spread: 90,
-                        origin: { y: 0.9 },
-                        colors: ['#ff0044', '#ff007f', '#ffffff']
-                    });
+                if (heartTaps >= maxHeartTaps) {
+                    h.el.classList.add('full-glow');
+                    if (window.confetti) {
+                        window.confetti({
+                            particleCount: 120,
+                            spread: 90,
+                            origin: { y: 0.9 },
+                            colors: ['#ff0044', '#ff007f', '#ffffff']
+                        });
+                    }
+                    showToast("💖 Loved by Anustup! Heart filled with 100% Glowing Red Liquid!");
+                } else {
+                    showToast(`❤️ Filling heart with red liquid... (${heartTaps * 20}%)`);
                 }
-                showToast("💖 Loved by Anustup! Heart filled with 100% Glowing Red Liquid!");
-            } else {
-                showToast(`❤️ Filling heart with red liquid... (${heartTaps * 20}%)`);
-            }
-        });
-    }
+            });
+        }
+    });
 });
