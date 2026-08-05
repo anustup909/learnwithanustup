@@ -1993,8 +1993,8 @@ body.dark-mode .store-btn {
     width: 28px;
     height: 28px;
     fill: rgba(255, 0, 85, 0.25);
-    filter: drop-shadow(0 0 4px rgba(255, 0, 85, 0.3));
     background: transparent !important;
+    filter: none !important;
 }
 
 .heart-svg-fill {
@@ -2004,26 +2004,23 @@ body.dark-mode .store-btn {
     width: 28px;
     height: 28px;
     fill: #ff0044;
-    filter: drop-shadow(0 0 8px #ff0044) drop-shadow(0 0 16px #ff0055);
     clip-path: inset(100% 0 0 0); /* Liquid fills up as clip-path decreases */
-    transition: clip-path 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
+    transition: clip-path 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: transparent !important;
+    filter: none !important;
 }
 
 .interactive-liquid-heart.full-glow .heart-svg-fill {
     fill: #ff0033;
-    filter: drop-shadow(0 0 15px #ff0044) drop-shadow(0 0 30px #ff0066) drop-shadow(0 0 45px #ff0088);
-    animation: liquidHeartGlowPulse 0.5s infinite alternate ease-in-out;
+    animation: liquidHeartPulse 0.5s infinite alternate ease-in-out;
 }
 
-@keyframes liquidHeartGlowPulse {
+@keyframes liquidHeartPulse {
     from {
         transform: scale(1.05);
-        filter: drop-shadow(0 0 12px #ff0044) drop-shadow(0 0 24px #ff0066);
     }
     to {
         transform: scale(1.25);
-        filter: drop-shadow(0 0 24px #ff0044) drop-shadow(0 0 48px #ff0088) drop-shadow(0 0 70px #ff00aa);
     }
 }
 
