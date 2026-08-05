@@ -19,7 +19,7 @@
 
     <!-- Stylesheets & Manifest -->
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="styles.css?v=7.0">
+    <link rel="stylesheet" href="styles.css?v=9.0">
 </head>
 <body>
     <!-- Sound Effect Audio Synthesizer Toggle -->
@@ -31,9 +31,13 @@
     <div style="background: rgba(15, 23, 42, 0.95); padding: 14px 16px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.15); z-index: 1001; position: relative;">
         <p style="font-size: 1.35rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
             THANKS FOR EVERYTHING . CREATED WITH LOVE 
-            <span class="interactive-liquid-heart" id="interactiveHeartTop" title="Tap repeatedly to fill with red liquid love!" style="position: relative; display: inline-block; cursor: pointer; user-select: none; font-size: 1.9rem; line-height: 1; vertical-align: middle;">
-                <span class="heart-base" style="color: rgba(255, 0, 85, 0.25);">❤️</span>
-                <span class="heart-liquid-fill" id="heartLiquidFillTop" style="position: absolute; top: 0; left: 0; color: #ff0044; filter: drop-shadow(0 0 10px #ff0044) drop-shadow(0 0 20px #ff0055); clip-path: inset(100% 0 0 0); transition: clip-path 0.25s ease;">❤️</span>
+            <span class="interactive-liquid-heart" id="interactiveHeartTop" title="Tap repeatedly to fill with red liquid love!">
+                <svg class="heart-svg-base" viewBox="0 0 24 24" width="28" height="28">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <svg class="heart-svg-fill" id="heartLiquidFillTop" viewBox="0 0 24 24" width="28" height="28">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
             </span> 
             BY ANUSTUP
         </p>
@@ -706,8 +710,12 @@
                 <p class="custom-thanks-heading">
                     THANKS FOR EVERYTHING . CREATED WITH LOVE 
                     <span class="interactive-liquid-heart" id="interactiveHeart" title="Tap repeatedly to fill with red liquid love!">
-                        <span class="heart-base">❤️</span>
-                        <span class="heart-liquid-fill" id="heartLiquidFill">❤️</span>
+                        <svg class="heart-svg-base" viewBox="0 0 24 24" width="28" height="28">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <svg class="heart-svg-fill" id="heartLiquidFill" viewBox="0 0 24 24" width="28" height="28">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
                     </span> 
                     BY ANUSTUP
                 </p>
@@ -722,6 +730,6 @@
     </a>
 
     <!-- JavaScript File -->
-    <script src="script.js?v=7.0"></script>
+    <script src="script.js?v=9.0"></script>
 </body>
 </html>
