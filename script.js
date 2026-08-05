@@ -569,7 +569,9 @@ document.addEventListener('DOMContentLoaded', () => {
         feedbackForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('feedbackEmail');
+            const commentInput = document.getElementById('feedbackComment');
             const email = emailInput ? emailInput.value.trim() : '';
+            const comment = commentInput ? commentInput.value.trim() : '';
             const rating = selectedRatingInput ? selectedRatingInput.value : '5';
 
             if (email) {
@@ -581,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const emailDirectLink = document.getElementById('emailDirectLink');
                 if (emailDirectLink) {
-                    emailDirectLink.href = `mailto:mailrivu.in@gmail.com?subject=Website%20Feedback%20(${rating}%20Stars)&body=Rating:%20${rating}/5%20Stars%0AUser%20Email:%20${encodeURIComponent(email)}`;
+                    emailDirectLink.href = `mailto:mailrivu.in@gmail.com?subject=Website%20Feedback%20(${rating}%20Stars)&body=Rating:%20${rating}/5%20Stars%0AUser%20Email:%20${encodeURIComponent(email)}%0AFeedback:%20${encodeURIComponent(comment)}`;
                 }
 
                 if (emailModal) emailModal.classList.add('active');
@@ -597,9 +599,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({
                         email: email,
-                        _subject: `⭐ New Website Feedback (${rating}/5 Stars) - Learn with Anustup`,
+                        _subject: `⭐ Website Feedback (${rating}/5 Stars) from ${email}`,
                         rating: `${rating} / 5 Stars`,
-                        feedback: `User ${email} rated your website ${rating} out of 5 stars!`,
+                        user_email: email,
+                        user_comment: comment,
                         _autoresponse: `Thank you for rating Learn with Anustup ${rating}/5 stars! Here is your free bonus lesson kit: https://youtu.be/Ud_hP2raTmk`
                     })
                 })
@@ -613,7 +616,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fetch('http://localhost:8085', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: email, rating: rating })
+                        body: JSON.stringify({ email: email, rating: rating, comment: comment })
                     }).catch(e => console.log('Local fallback error:', e));
                 });
 
