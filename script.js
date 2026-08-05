@@ -650,39 +650,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 17. Interactive Liquid Filling Heart Emoji ---
-    const hearts = [
-        { el: document.getElementById('interactiveHeart'), fill: document.getElementById('heartLiquidFill') },
-        { el: document.getElementById('interactiveHeartTop'), fill: document.getElementById('heartLiquidFillTop') }
+    // --- 17. Interactive Crafting Hammer & Liquid Filling Heart ---
+    const craftWidgets = [
+        { 
+            heart: document.getElementById('interactiveHeart'), 
+            fill: document.getElementById('heartLiquidFill'), 
+            hammerBtn: document.getElementById('craftHammerBtn'), 
+            hammerIcon: document.getElementById('hammerIcon') 
+        },
+        { 
+            heart: document.getElementById('interactiveHeartTop'), 
+            fill: document.getElementById('heartLiquidFillTop'), 
+            hammerBtn: document.getElementById('craftHammerBtnTop'), 
+            hammerIcon: document.getElementById('hammerIconTop') 
+        }
     ];
 
-    hearts.forEach(h => {
-        if (h.el && h.fill) {
-            let heartTaps = 0;
-            const maxHeartTaps = 5;
+    craftWidgets.forEach(w => {
+        if (w.fill) {
+            let strikes = 0;
+            const maxStrikes = 5;
 
-            h.el.addEventListener('click', () => {
-                heartTaps++;
-                const fillPercentage = Math.max(0, 100 - (heartTaps / maxHeartTaps) * 100);
-                h.fill.style.clipPath = `inset(${fillPercentage}% 0 0 0)`;
+            const handleStrike = () => {
+                strikes++;
+                const fillPercentage = Math.max(0, 100 - (strikes / maxStrikes) * 100);
+                w.fill.style.clipPath = `inset(${fillPercentage}% 0 0 0)`;
+
+                if (w.hammerIcon) {
+                    w.hammerIcon.classList.remove('striking');
+                    void w.hammerIcon.offsetWidth; // Trigger reflow for animation restart
+                    w.hammerIcon.classList.add('striking');
+                }
 
                 playCelebrationSound();
 
-                if (heartTaps >= maxHeartTaps) {
-                    h.el.classList.add('full-glow');
+                if (strikes >= maxStrikes) {
+                    if (w.heart) w.heart.classList.add('full-glow');
                     if (window.confetti) {
                         window.confetti({
-                            particleCount: 120,
-                            spread: 90,
+                            particleCount: 130,
+                            spread: 100,
                             origin: { y: 0.9 },
-                            colors: ['#ff0044', '#ff007f', '#ffffff']
+                            colors: ['#ff0044', '#ffb703', '#ffffff']
                         });
                     }
-                    showToast("💖 Loved by Anustup! Heart filled with 100% Glowing Red Liquid!");
+                    showToast("🔨 Crafted with Passion! Heart filled 100% with Glowing Red Liquid!");
                 } else {
-                    showToast(`❤️ Filling heart with red liquid... (${heartTaps * 20}%)`);
+                    showToast(`🔨 Hammer Strike! Filling heart... (${strikes * 20}%)`);
                 }
-            });
+            };
+
+            if (w.hammerBtn) w.hammerBtn.addEventListener('click', handleStrike);
+            if (w.heart) w.heart.addEventListener('click', handleStrike);
         }
     });
 });
