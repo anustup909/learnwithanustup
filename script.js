@@ -694,9 +694,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             colors: ['#ff0044', '#ffb703', '#ffffff']
                         });
                     }
-                    showToast("🔨 Crafted with Passion! Heart filled 100% with Glowing Red Liquid!");
-                } else {
-                    showToast(`🔨 Hammer Strike! Filling heart... (${strikes * 20}%)`);
                 }
             };
 
