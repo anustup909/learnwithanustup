@@ -1,0 +1,16 @@
+{
+  "name": "Learn with Anustup - E-Learning Platform",
+  "short_name": "LearnWithAnustup",
+  "description": "Interactive E-Learning Platform by Anustup with video lessons, courses, and offline access.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0f1d",
+  "theme_color": "#0072ff",
+  "icons": [
+    {
+      "src": "./assets/hero_illustration.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

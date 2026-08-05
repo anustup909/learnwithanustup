@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn with Anustup - Premium E-Learning & Interactive Platform</title>
+    <meta name="description" content="Master new skills with Learn with Anustup. Engaging video lessons, top educators, and self-paced learning designed for your success.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Stylesheets & Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sound Effect Audio Synthesizer Toggle -->
+    <button id="soundToggle" class="sound-toggle-btn" title="Toggle Click Sound Effects" aria-label="Toggle Sound">
+        <i class="fa-solid fa-volume-high"></i>
+    </button>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <span class="logo-text">Learn with <strong>Anustup</strong></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#courses" class="nav-link">Courses</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#app" class="nav-link">App</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Search Open Button -->
+                <button class="search-trigger" id="searchTrigger" title="Search Courses (Ctrl+K)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button class="btn btn-primary nav-cta" id="navEnrollBtn">
+                    <span>Enroll Now</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Search Modal Overlay -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search courses, skills, topics..." autocomplete="off">
+                <button class="search-close" id="searchClose">&times;</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Dynamic search items -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <!-- Background Decorative Shapes -->
+        <div class="bg-shape shape-blue"></div>
+        <div class="bg-shape shape-cyan"></div>
+        <div class="bg-shape shape-grid"></div>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-in">
+                    <span class="pulse-dot"></span>
+                    <span>🚀 #1 Rated E-Learning Platform with Anustup</span>
+                </div>
+
+                <h1 class="hero-title animate-slide-up">
+                    Let's Make <br>
+                    <span class="gradient-text">Learning Fun</span>
+                </h1>
+
+                <p class="hero-description animate-slide-up delay-1">
+                    Unlock your full potential with engaging video lessons, expert mentorship from Anustup, hands-on practice, and a vibrant community of over 35,000+ passionate learners.
+                </p>
+
+                <div class="hero-buttons animate-slide-up delay-2">
+                    <button class="btn btn-primary btn-large ripple-btn" id="heroStartBtn">
+                        <span>Start Learning</span>
+                        <i class="fa-solid fa-rocket"></i>
+                    </button>
+                    <a href="#courses" class="btn btn-outline btn-large ripple-btn">
+                        <span>Explore More</span>
+                        <i class="fa-solid fa-compass"></i>
+                    </a>
+                </div>
+
+                <!-- Live Counter Stats -->
+                <div class="hero-stats animate-fade-in delay-3">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="35000">0</h3>
+                        <span class="stat-plus">+</span>
+                        <p class="stat-label">Happy Students</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="120">0</h3>
+                        <span class="stat-plus">+</span>
+                        <p class="stat-label">Expert Courses</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="4.9">0</h3>
+                        <span class="stat-star"><i class="fa-solid fa-star"></i></span>
+                        <p class="stat-label">Rating Average</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Interactive 3D Card Illustration -->
+            <div class="hero-visual animate-float">
+                <div class="tilt-card-wrapper" id="heroTiltCard">
+                    <div class="hero-card-glow"></div>
+                    <div class="hero-frame">
+                        <img src="assets/hero_illustration.png" alt="Learn with Anustup Online Learning Illustration" class="hero-img">
+                        <button class="play-video-btn" id="playDemoVideoBtn" title="Play Intro Demo Video">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="pulse-ring"></span>
+                        </button>
+                    </div>
+
+                    <!-- Floating Badges -->
+                    <div class="floating-badge badge-top-right animate-bounce-slow">
+                        <div class="badge-icon green"><i class="fa-solid fa-certificate"></i></div>
+                        <div class="badge-text">
+                            <strong>Certified</strong>
+                            <span>By Anustup</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-badge badge-bottom-left animate-bounce-delay">
+                        <div class="badge-icon blue"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="badge-text">
+                            <strong>Self Paced</strong>
+                            <span>Lifetime Access</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section features-section" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">
+                    We at Learn with Anustup provide you with engaging video lessons taught by top educators using the best techniques
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card" data-feature="lectures">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Engaging Lectures</h3>
+                    <p class="card-text">
+                        High quality HD video content with interactive quizzes, downloadable notes, and real-world project assignments.
+                    </p>
+                    <button class="feature-action-btn">
+                        <span>Explore Topic</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Feature 2 (Highlighted active card matching image) -->
+                <div class="feature-card feature-card-highlighted" data-feature="educators">
+                    <div class="highlight-badge">Popular</div>
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Top Educator</h3>
+                    <p class="card-text">
+                        Learn directly from Anustup and industry leaders with proven track records and interactive mentorship.
+                    </p>
+                    <button class="feature-action-btn">
+                        <span>Meet Instructors</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card" data-feature="selfpaced">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Self Paced</h3>
+                    <p class="card-text">
+                        Learn on your own schedule, anywhere, on any device. Track your progress with smart analytics and milestones.
+                    </p>
+                    <button class="feature-action-btn">
+                        <span>View Schedule</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="section courses-section" id="courses">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Popular Courses</h2>
+                <p class="section-subtitle">
+                    Explore high impact courses designed by Anustup to master new skills with ease.
+                </p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="course-filters" id="courseFilters">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="speaking">Speaking</button>
+                <button class="filter-btn" data-filter="photography">Photography</button>
+                <button class="filter-btn" data-filter="productivity">Productivity</button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course 1 -->
+                <div class="course-card" data-category="speaking">
+                    <div class="course-img-wrapper">
+                        <img src="assets/course_public_speaking.png" alt="Fluent Public Speaking" class="course-img">
+                        <span class="category-tag">Public Speaking</span>
+                        <div class="course-overlay">
+                            <button class="quick-view-btn" data-course="speaking">Quick Preview</button>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (1,240)</span>
+                            <span class="duration"><i class="fa-regular fa-clock"></i> 12 Hours</span>
+                        </div>
+                        <h3 class="course-title">Fluent Public Speaking</h3>
+                        <p class="course-desc">
+                            Master body language, voice modulation, and stage presence to captivate any audience with confidence.
+                        </p>
+                        <div class="course-footer">
+                            <div class="price-box">
+                                <span class="old-price">₹7,999</span>
+                                <span class="current-price">₹3,999</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm learn-more-btn" data-course="speaking">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card" data-category="photography">
+                    <div class="course-img-wrapper">
+                        <img src="assets/course_photography.png" alt="Outdoor Photography" class="course-img">
+                        <span class="category-tag">Photography</span>
+                        <div class="course-overlay">
+                            <button class="quick-view-btn" data-course="photography">Quick Preview</button>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (890)</span>
+                            <span class="duration"><i class="fa-regular fa-clock"></i> 18 Hours</span>
+                        </div>
+                        <h3 class="course-title">Outdoor Photography</h3>
+                        <p class="course-desc">
+                            Capture stunning natural landscapes, master manual camera controls, composition, and Lightroom editing.
+                        </p>
+                        <div class="course-footer">
+                            <div class="price-box">
+                                <span class="old-price">₹6,999</span>
+                                <span class="current-price">₹2,999</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm learn-more-btn" data-course="photography">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card" data-category="productivity">
+                    <div class="course-img-wrapper">
+                        <img src="assets/course_typing_master.png" alt="Typing Master" class="course-img">
+                        <span class="category-tag">Productivity</span>
+                        <div class="course-overlay">
+                            <button class="quick-view-btn" data-course="typing">Quick Preview</button>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span class="rating"><i class="fa-solid fa-star"></i> 5.0 (2,150)</span>
+                            <span class="duration"><i class="fa-regular fa-clock"></i> 8 Hours</span>
+                        </div>
+                        <h3 class="course-title">Typing Master Pro</h3>
+                        <p class="course-desc">
+                            Triple your typing speed with muscle memory touch typing techniques, accuracy drills, and ergonomics.
+                        </p>
+                        <div class="course-footer">
+                            <div class="price-box">
+                                <span class="old-price">₹4,999</span>
+                                <span class="current-price">₹1,999</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm learn-more-btn" data-course="typing">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials">
+        <!-- Blue Curve Background Overlay matching sample design -->
+        <div class="testimonials-bg-wave"></div>
+
+        <div class="container testimonials-container">
+            <div class="section-header text-center light-text">
+                <h2 class="section-title">What Our Students Say</h2>
+                <p class="section-subtitle">
+                    We provide a learning experience tailored by Anustup. Hear from our successful students across India and worldwide.
+                </p>
+            </div>
+
+            <div class="testimonials-slider-wrapper">
+                <button class="slider-arrow prev-btn" id="testimonialPrev" aria-label="Previous Testimonial">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card active">
+                        <div class="student-avatar-wrapper">
+                            <img src="assets/student_avatar_1.png" alt="Aniket Sharma" class="student-avatar">
+                            <span class="quote-badge"><i class="fa-solid fa-quote-right"></i></span>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Learn with Anustup completely changed my communication skills! Anustup's practical frameworks and speech exercises gave me the confidence to lead tech talks with ease."
+                            </p>
+                            <h4 class="student-name">Aniket Sharma</h4>
+                            <span class="student-role">Software Engineer & Tech Lead</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="student-avatar-wrapper">
+                            <img src="assets/student_avatar_2.png" alt="Priya Patel" class="student-avatar">
+                            <span class="quote-badge"><i class="fa-solid fa-quote-right"></i></span>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "The Outdoor Photography course by Anustup was pure gold! Anustup explains manual ISO, aperture, and lighting so simply. My photo portfolio has never looked this crisp."
+                            </p>
+                            <h4 class="student-name">Priya Patel</h4>
+                            <span class="student-role">Creative Director & Photographer</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="student-avatar-wrapper">
+                            <img src="assets/student_avatar_1.png" alt="Rohan Verma" class="student-avatar">
+                            <span class="quote-badge"><i class="fa-solid fa-quote-right"></i></span>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "I went from typing 35 WPM to 95 WPM in just 3 weeks with Anustup's Typing Master Pro module. The interactive drills kept me super motivated every day!"
+                            </p>
+                            <h4 class="student-name">Rohan Verma</h4>
+                            <span class="student-role">Product Manager & Creator</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-arrow next-btn" id="testimonialNext" aria-label="Next Testimonial">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Dots Indicator -->
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Our App Section -->
+    <section class="section app-section" id="app">
+        <div class="container app-container">
+            <div class="app-visual">
+                <div class="phone-frame-wrapper" id="phoneWrapper">
+                    <img src="assets/app_mockup.png" alt="Learn with Anustup Mobile App" class="app-phone-img">
+                    <div class="interactive-pulse-point point-1" data-tooltip="Push Reminders" title="Click to test Reminders"></div>
+                    <div class="interactive-pulse-point point-2" data-tooltip="Offline Video Player" title="Click to test Offline Mode"></div>
+                </div>
+            </div>
+
+            <div class="app-content">
+                <h2 class="section-title">Download Our App</h2>
+                <p class="section-subtitle">
+                    Unlock all new amazing features with Learn with Anustup mobile app available on iOS and Android.
+                </p>
+
+                <ul class="app-features-list">
+                    <li class="app-feature-item" id="featureReminder">
+                        <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+                        <div class="feature-info">
+                            <h4>Set Reminders</h4>
+                            <p>Never miss a study session with smart personalized daily notification reminders from Anustup.</p>
+                        </div>
+                        <button class="test-feature-btn">Test Alert</button>
+                    </li>
+
+                    <li class="app-feature-item" id="featureLectures">
+                        <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+                        <div class="feature-info">
+                            <h4>Download Lectures</h4>
+                            <p>Watch your favorite video lessons offline anytime while traveling or commuting.</p>
+                        </div>
+                        <button class="test-feature-btn">Simulate Download</button>
+                    </li>
+
+                    <li class="app-feature-item" id="featurePro">
+                        <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+                        <div class="feature-info">
+                            <h4>Free Pro Access</h4>
+                            <p>Get exclusive bonus exercise worksheets and 1-on-1 mentor guidance from Anustup.</p>
+                        </div>
+                        <button class="test-feature-btn">Claim Pass</button>
+                    </li>
+                </ul>
+
+                <div class="app-buttons">
+                    <a href="#download" class="store-btn google-play-btn ripple-btn" id="googlePlayBtn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <div class="btn-label">
+                            <small>GET IT ON</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+
+                    <a href="#download" class="store-btn app-store-btn ripple-btn" id="appStoreBtn">
+                        <i class="fa-brands fa-apple"></i>
+                        <div class="btn-label">
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Course Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <span class="modal-badge" id="modalCategory">Course Category</span>
+                <h3 id="modalTitle">Course Title</h3>
+            </div>
+            <div class="modal-body">
+                <div class="video-preview-box">
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <i class="fa-solid fa-play video-play-icon"></i>
+                        <p>Click to Play Sample Lesson Video by Anustup</p>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h4>What you'll learn:</h4>
+                    <ul class="learning-points" id="modalPoints">
+                        <!-- Populated by JS -->
+                    </ul>
+                    <div class="modal-price-row">
+                        <div>
+                            <span class="modal-price" id="modalPrice">₹3,999</span>
+                            <span class="modal-guarantee">30-Day Money-Back Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modalCancelBtn">Cancel</button>
+                <button class="btn btn-primary ripple-btn" id="modalEnrollBtn">Confirm & Enroll Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Demo Player Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-backdrop" id="videoBackdrop"></div>
+        <div class="modal-card video-modal-card">
+            <button class="modal-close" id="videoClose">&times;</button>
+            <div class="video-player-container">
+                <iframe id="videoIframe" src="about:blank" title="Learn with Anustup Demo Video" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample Email Sent Modal -->
+    <div class="modal" id="emailModal">
+        <div class="modal-backdrop" id="emailBackdrop"></div>
+        <div class="modal-card email-modal-card">
+            <button class="modal-close" id="emailClose">&times;</button>
+            <div class="email-modal-header">
+                <div class="email-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+                <div>
+                    <h3>Sample Email Dispatched!</h3>
+                    <span class="email-status">Sent via <strong>mailrivu.in@gmail.com</strong></span>
+                </div>
+            </div>
+            <div class="email-preview-box">
+                <div class="email-header-row">
+                    <span class="email-label">From:</span>
+                    <strong class="email-value">mailrivu.in@gmail.com</strong>
+                </div>
+                <div class="email-header-row">
+                    <span class="email-label">To:</span>
+                    <strong class="email-value" id="emailRecipient">user@example.com</strong>
+                </div>
+                <div class="email-header-row">
+                    <span class="email-label">Subject:</span>
+                    <strong class="email-value">🚀 Welcome to Learn with Anustup - Your Free Sample Lesson Kit</strong>
+                </div>
+                <div class="email-body-content">
+                    <p>Hi there! 👋</p>
+                    <p>Thank you for subscribing to <strong>Learn with Anustup</strong>!</p>
+                    <p>We are excited to have you onboard. Here is your exclusive sample lesson & roadmap guide:</p>
+                    <div class="email-callout">
+                        🎁 <strong>Bonus Kit Attached:</strong> Public Speaking & Productivity Roadmap (PDF) + Video Access
+                    </div>
+                    <p>If you have any questions or need mentor assistance, feel free to reply directly to this email.</p>
+                    <br>
+                    <p>Best regards,<br><strong>Anustup</strong><br><small>mailrivu.in@gmail.com</small></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary ripple-btn" id="emailModalDoneBtn">Awesome, Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scroll To Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <a href="#home" class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="logo-text">Learn with <strong>Anustup</strong></span>
+                </a>
+                <p class="footer-desc">
+                    Empowering minds globally with accessible, interactive, and high-impact learning experiences curated by Anustup.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">About Us</a></li>
+                    <li><a href="#courses">All Courses</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#app">Mobile App</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Popular Topics</h4>
+                <ul class="footer-links">
+                    <li><a href="#courses">Public Speaking</a></li>
+                    <li><a href="#courses">Digital Photography</a></li>
+                    <li><a href="#courses">Speed Typing</a></li>
+                    <li><a href="#courses">Web Development</a></li>
+                    <li><a href="#courses">UI/UX Design</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to Anustup's weekly newsletter for free mini-lessons and course discounts.</p>
+                <!-- Direct Native Email Form (Zero 3rd Parties) -->
+                <form class="newsletter-form" id="newsletterForm" action="mailto:mailrivu.in@gmail.com" method="GET" enctype="text/plain">
+                    <input type="hidden" name="subject" value="Learn with Anustup Subscription Request">
+                    <div class="input-group">
+                        <input type="email" name="body" placeholder="Enter your email" required id="newsletterEmail">
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 Learn with Anustup. All rights reserved. Crafted with passion.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
