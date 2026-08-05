@@ -500,8 +500,10 @@ document.addEventListener('DOMContentLoaded', () => {
     videoClose.addEventListener('click', closeVideoModal);
     videoBackdrop.addEventListener('click', closeVideoModal);
 
-    // --- 14. Newsletter Form Submission & Automatic Sample Email Dispatch ---
-    const newsletterForm = document.getElementById('newsletterForm');
+    // --- 14. 5-Star Interactive Rating & Direct Feedback Email System ---
+    const starRatingContainer = document.getElementById('starRating');
+    const selectedRatingInput = document.getElementById('selectedRating');
+    const feedbackForm = document.getElementById('feedbackForm');
     const emailModal = document.getElementById('emailModal');
     const emailRecipient = document.getElementById('emailRecipient');
     const emailClose = document.getElementById('emailClose');
@@ -516,59 +518,111 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailBackdrop) emailBackdrop.addEventListener('click', closeEmailModal);
     if (emailModalDoneBtn) emailModalDoneBtn.addEventListener('click', closeEmailModal);
 
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const emailInput = document.getElementById('newsletterEmail');
-        const email = emailInput ? emailInput.value.trim() : '';
-
-        if (email) {
-            playCelebrationSound();
-            if (window.confetti) {
-                window.confetti({ particleCount: 70, spread: 60, origin: { y: 0.8 } });
-            }
-            if (emailRecipient) emailRecipient.innerText = email;
-            
-            const emailDirectLink = document.getElementById('emailDirectLink');
-            if (emailDirectLink) {
-                emailDirectLink.href = `mailto:mailrivu.in@gmail.com?subject=Learn%20with%20Anustup%20Subscription&body=Hi%20Anustup,%20I%20subscribed%20with%20email:%20${encodeURIComponent(email)}`;
-            }
-
-            if (emailModal) emailModal.classList.add('active');
-
-            showToast("📩 Dispatching email to mailrivu.in@gmail.com...");
-
-            // Secure HTTPS dispatch for live GitHub Pages site (works 24/7 on mobile/PC)
-            fetch('https://formsubmit.co/ajax/mailrivu.in@gmail.com', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    _subject: '🚀 New Subscriber - Learn with Anustup!',
-                    _autoresponse: 'Thank you for subscribing to Learn with Anustup! Here is your free sample lesson kit: https://youtu.be/Ud_hP2raTmk'
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                showToast("✅ Email sent! Check mailrivu.in@gmail.com & inbox.");
-            })
-            .catch(err => {
-                console.log('Live email dispatch response:', err);
-                // Fallback attempt to local server if offline
-                fetch('http://localhost:8085', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email })
-                }).catch(e => console.log('Local fallback status:', e));
+    // Interactive Star Hover & Selection Logic
+    if (starRatingContainer) {
+        const stars = starRatingContainer.querySelectorAll('.star');
+        
+        stars.forEach((star) => {
+            star.addEventListener('click', () => {
+                const val = parseInt(star.getAttribute('data-value'));
+                if (selectedRatingInput) selectedRatingInput.value = val;
+                
+                stars.forEach((s) => {
+                    const sVal = parseInt(s.getAttribute('data-value'));
+                    if (sVal <= val) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
             });
 
-            setTimeout(() => {
-                newsletterForm.reset();
-            }, 1000);
-        }
-    });
+            star.addEventListener('mouseenter', () => {
+                const hoverVal = parseInt(star.getAttribute('data-value'));
+                stars.forEach((s) => {
+                    const sVal = parseInt(s.getAttribute('data-value'));
+                    if (sVal <= hoverVal) {
+                        s.style.color = '#ffb703';
+                    } else {
+                        s.style.color = '#475569';
+                    }
+                });
+            });
+        });
+
+        starRatingContainer.addEventListener('mouseleave', () => {
+            const currentVal = parseInt(selectedRatingInput ? selectedRatingInput.value : 5);
+            stars.forEach((s) => {
+                const sVal = parseInt(s.getAttribute('data-value'));
+                s.style.color = '';
+                if (sVal <= currentVal) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+    }
+
+    // Feedback Submission & Direct Email Dispatch to mailrivu.in@gmail.com
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('feedbackEmail');
+            const email = emailInput ? emailInput.value.trim() : '';
+            const rating = selectedRatingInput ? selectedRatingInput.value : '5';
+
+            if (email) {
+                playCelebrationSound();
+                if (window.confetti) {
+                    window.confetti({ particleCount: 80, spread: 70, origin: { y: 0.8 } });
+                }
+                if (emailRecipient) emailRecipient.innerText = email;
+                
+                const emailDirectLink = document.getElementById('emailDirectLink');
+                if (emailDirectLink) {
+                    emailDirectLink.href = `mailto:mailrivu.in@gmail.com?subject=Website%20Feedback%20(${rating}%20Stars)&body=Rating:%20${rating}/5%20Stars%0AUser%20Email:%20${encodeURIComponent(email)}`;
+                }
+
+                if (emailModal) emailModal.classList.add('active');
+
+                showToast(`⭐ Dispatching ${rating}-Star Feedback to mailrivu.in@gmail.com...`);
+
+                // Direct HTTPS Email Dispatch to mailrivu.in@gmail.com
+                fetch('https://formsubmit.co/ajax/mailrivu.in@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        _subject: `⭐ New Website Feedback (${rating}/5 Stars) - Learn with Anustup`,
+                        rating: `${rating} / 5 Stars`,
+                        feedback: `User ${email} rated your website ${rating} out of 5 stars!`,
+                        _autoresponse: `Thank you for rating Learn with Anustup ${rating}/5 stars! Here is your free bonus lesson kit: https://youtu.be/Ud_hP2raTmk`
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    showToast(`⭐ ${rating}-Star Feedback sent directly to mailrivu.in@gmail.com!`);
+                })
+                .catch(err => {
+                    console.log('Feedback dispatch status:', err);
+                    // Local server fallback
+                    fetch('http://localhost:8085', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email, rating: rating })
+                    }).catch(e => console.log('Local fallback error:', e));
+                });
+
+                setTimeout(() => {
+                    feedbackForm.reset();
+                }, 1000);
+            }
+        });
+    }
 
     // --- 15. Helper Toast Notification System ---
     function showToast(message) {

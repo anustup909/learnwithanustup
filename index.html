@@ -656,14 +656,21 @@
                 </ul>
             </div>
 
-            <div class="footer-col newsletter-col">
-                <h4>Stay Updated</h4>
-                <p>Subscribe to Anustup's weekly newsletter for free mini-lessons and course discounts.</p>
-                <!-- Secure HTTPS AJAX Email Form -->
-                <form class="newsletter-form" id="newsletterForm">
+            <div class="footer-col feedback-col">
+                <h4>How's the website ?? Give feedback</h4>
+                <p>Rate your experience & send direct feedback to Anustup!</p>
+                <form class="feedback-form" id="feedbackForm">
+                    <div class="star-rating" id="starRating">
+                        <i class="fa-solid fa-star star active" data-value="1" title="1 Star"></i>
+                        <i class="fa-solid fa-star star active" data-value="2" title="2 Stars"></i>
+                        <i class="fa-solid fa-star star active" data-value="3" title="3 Stars"></i>
+                        <i class="fa-solid fa-star star active" data-value="4" title="4 Stars"></i>
+                        <i class="fa-solid fa-star star active" data-value="5" title="5 Stars"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="selectedRating" value="5">
                     <div class="input-group">
-                        <input type="email" name="email" placeholder="Enter your email" required id="newsletterEmail">
-                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+                        <input type="email" name="email" placeholder="Enter your email" required id="feedbackEmail">
+                        <button type="submit" class="btn btn-primary" title="Submit Feedback"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </form>
             </div>
