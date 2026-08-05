@@ -529,20 +529,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emailRecipient) emailRecipient.innerText = email;
             if (emailModal) emailModal.classList.add('active');
 
-            showToast("📩 Dispatching direct email from mailrivu.in@gmail.com...");
+            showToast("📩 Dispatching email to mailrivu.in@gmail.com...");
 
-            // Try local Python SMTP server first (zero third party)
-            fetch('http://localhost:8085', {
+            // Secure HTTPS dispatch for live GitHub Pages site (works 24/7 on mobile/PC)
+            fetch('https://formsubmit.co/ajax/mailrivu.in@gmail.com', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    _subject: '🚀 New Subscriber - Learn with Anustup!',
+                    _autoresponse: 'Thank you for subscribing to Learn with Anustup! Here is your free sample lesson kit: https://youtu.be/Ud_hP2raTmk'
+                })
             })
             .then(res => res.json())
             .then(data => {
-                showToast("✅ Direct email dispatched from mailrivu.in@gmail.com!");
+                showToast("✅ Email sent! Check mailrivu.in@gmail.com & inbox.");
             })
             .catch(err => {
-                console.log('Local SMTP server response status:', err);
+                console.log('Live email dispatch response:', err);
+                // Fallback attempt to local server if offline
+                fetch('http://localhost:8085', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                }).catch(e => console.log('Local fallback status:', e));
             });
 
             setTimeout(() => {
