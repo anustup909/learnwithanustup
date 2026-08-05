@@ -649,4 +649,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(err => console.log('[PWA] Service Worker registration failed:', err));
         });
     }
+
+    // --- 17. Interactive Liquid Filling Heart Emoji ---
+    const interactiveHeart = document.getElementById('interactiveHeart');
+    const heartLiquidFill = document.getElementById('heartLiquidFill');
+
+    if (interactiveHeart && heartLiquidFill) {
+        let heartTaps = 0;
+        const maxHeartTaps = 5;
+
+        interactiveHeart.addEventListener('click', () => {
+            heartTaps++;
+            const fillPercentage = Math.max(0, 100 - (heartTaps / maxHeartTaps) * 100);
+            heartLiquidFill.style.clipPath = `inset(${fillPercentage}% 0 0 0)`;
+
+            playCelebrationSound();
+
+            if (heartTaps >= maxHeartTaps) {
+                interactiveHeart.classList.add('full-glow');
+                if (window.confetti) {
+                    window.confetti({
+                        particleCount: 120,
+                        spread: 90,
+                        origin: { y: 0.9 },
+                        colors: ['#ff0044', '#ff007f', '#ffffff']
+                    });
+                }
+                showToast("💖 Loved by Anustup! Heart filled with 100% Glowing Red Liquid!");
+            } else {
+                showToast(`❤️ Filling heart with red liquid... (${heartTaps * 20}%)`);
+            }
+        });
+    }
 });
