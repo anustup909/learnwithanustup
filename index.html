@@ -656,11 +656,10 @@
             <div class="footer-col newsletter-col">
                 <h4>Stay Updated</h4>
                 <p>Subscribe to Anustup's weekly newsletter for free mini-lessons and course discounts.</p>
-                <!-- Direct Native Email Form (Zero 3rd Parties) -->
-                <form class="newsletter-form" id="newsletterForm" action="mailto:mailrivu.in@gmail.com" method="GET" enctype="text/plain">
-                    <input type="hidden" name="subject" value="Learn with Anustup Subscription Request">
+                <!-- Secure HTTPS AJAX Email Form -->
+                <form class="newsletter-form" id="newsletterForm">
                     <div class="input-group">
-                        <input type="email" name="body" placeholder="Enter your email" required id="newsletterEmail">
+                        <input type="email" name="email" placeholder="Enter your email" required id="newsletterEmail">
                         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </form>

@@ -517,8 +517,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailModalDoneBtn) emailModalDoneBtn.addEventListener('click', closeEmailModal);
 
     newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         const emailInput = document.getElementById('newsletterEmail');
-        const email = emailInput ? emailInput.value : '';
+        const email = emailInput ? emailInput.value.trim() : '';
 
         if (email) {
             playCelebrationSound();
@@ -530,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             showToast("📩 Dispatching direct email from mailrivu.in@gmail.com...");
 
-            // Send to direct local Python SMTP server (zero 3rd party)
+            // Try local Python SMTP server first (zero third party)
             fetch('http://localhost:8085', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -541,8 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showToast("✅ Direct email dispatched from mailrivu.in@gmail.com!");
             })
             .catch(err => {
-                // Native Mailto fallback if local server is offline
-                console.log('Direct local SMTP status:', err);
+                console.log('Local SMTP server response status:', err);
             });
 
             setTimeout(() => {
