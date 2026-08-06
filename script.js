@@ -518,6 +518,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailBackdrop) emailBackdrop.addEventListener('click', closeEmailModal);
     if (emailModalDoneBtn) emailModalDoneBtn.addEventListener('click', closeEmailModal);
 
+    // Smooth Feedback Section Scroll & Focus Handler
+    document.querySelectorAll('a[href="#feedback"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const feedbackSec = document.getElementById('feedback');
+            if (feedbackSec) {
+                feedbackSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const emailInput = document.getElementById('feedbackEmail');
+                if (emailInput) {
+                    setTimeout(() => emailInput.focus(), 600);
+                }
+                feedbackSec.style.transition = 'all 0.4s ease';
+                feedbackSec.style.transform = 'scale(1.03)';
+                feedbackSec.style.boxShadow = '0 0 25px rgba(0, 198, 255, 0.4)';
+                setTimeout(() => {
+                    feedbackSec.style.transform = 'scale(1)';
+                    feedbackSec.style.boxShadow = 'none';
+                }, 1200);
+            }
+        });
+    });
+
     // Interactive Star Hover & Selection Logic
     if (starRatingContainer) {
         const stars = starRatingContainer.querySelectorAll('.star');
