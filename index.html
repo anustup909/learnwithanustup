@@ -39,7 +39,6 @@
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#centers" class="nav-link">Centers 🌍</a></li>
                     <li><a href="#features" class="nav-link">Features</a></li>
                     <li><a href="#courses" class="nav-link">Courses</a></li>
                     <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
@@ -176,86 +175,7 @@
         </div>
     </section>
 
-    <!-- Our Global Centers Section with Small Pure 3D Globe FIRST then Text -->
-    <section class="section centers-section" id="centers">
-        <div class="container text-center" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- 1. Small Pure 3D Animated Globe FIRST -->
-            <div class="compact-globe-wrapper" onclick="openCentersModal()" title="Click to view all Global Centers & Main Branch!">
-                <canvas id="globeCanvas" width="160" height="160"></canvas>
-            </div>
 
-            <!-- 2. Text SECOND -->
-            <div class="section-header text-center" style="margin-top: 12px; margin-bottom: 20px;">
-                <h2 class="section-title">Where Our Centers Are</h2>
-                <p class="section-subtitle" style="margin-bottom: 18px;">
-                    Tap the globe above or click the line below to explore our Main HQ & Global Learning Hubs!
-                </p>
-
-                <!-- Sleek Single-Line Interactive Click Trigger -->
-                <div class="single-line-centers-trigger" onclick="openCentersModal()" title="Click to view all Branch details">
-                    <span class="pulse-dot-cyan"></span>
-                    <span><strong>🇮🇳 Main Branch: India Headquarters</strong> • Click to view all Global Learning Hubs & Details</span>
-                    <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px; color: var(--primary-color);"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sleek Glassmorphism Modal for Centers Details -->
-    <div class="modal" id="centersModal">
-        <div class="modal-backdrop" onclick="closeCentersModal()"></div>
-        <div class="modal-card centers-modal-card" style="max-width: 520px; text-align: left; padding: 28px;">
-            <button class="modal-close" onclick="closeCentersModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; color: #fff; cursor: pointer;">&times;</button>
-            <div class="modal-header" style="margin-bottom: 20px;">
-                <span class="hq-badge" style="display: inline-block; background: rgba(0, 198, 255, 0.15); color: #00c6ff; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">🌍 Worldwide Network</span>
-                <h3 style="font-size: 1.4rem; color: #ffffff; margin-top: 6px;">Our Global Centers & Main Headquarters</h3>
-            </div>
-            <div class="modal-body">
-                <!-- Main Branch India -->
-                <div class="hq-modal-highlight" style="background: rgba(15, 23, 42, 0.9); border: 2px solid #00c6ff; border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; box-shadow: 0 0 25px rgba(0, 198, 255, 0.3);">
-                    <div style="font-size: 2.8rem; line-height: 1;">🇮🇳</div>
-                    <div>
-                        <span style="background: #00c6ff; color: #0f172a; font-weight: 800; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">⭐ Main HQ</span>
-                        <h4 style="font-size: 1.25rem; margin: 4px 0; color: #ffffff;">India Headquarters</h4>
-                        <p style="font-size: 0.88rem; color: #94a3b8; margin: 0 0 6px 0;">Tech City Campus, India • Managed directly by Anustup</p>
-                        <small style="color: #00c6ff; font-weight: 600;"><i class="fa-solid fa-users"></i> 25,000+ Enrolled Learners</small>
-                    </div>
-                </div>
-
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.2px; color: #94a3b8; margin: 0 0 12px 0;">Global Satellite Hubs</h4>
-                <div class="satellite-hubs-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                    <div class="hub-chip">
-                        <span class="hub-icon">🇺🇸</span>
-                        <div class="hub-info">
-                            <strong>United States</strong>
-                            <small>San Francisco Hub</small>
-                        </div>
-                    </div>
-                    <div class="hub-chip">
-                        <span class="hub-icon">🇬🇧</span>
-                        <div class="hub-info">
-                            <strong>United Kingdom</strong>
-                            <small>London Studio Hub</small>
-                        </div>
-                    </div>
-                    <div class="hub-chip">
-                        <span class="hub-icon">🇦🇪</span>
-                        <div class="hub-info">
-                            <strong>UAE</strong>
-                            <small>Dubai Tech Hub</small>
-                        </div>
-                    </div>
-                    <div class="hub-chip">
-                        <span class="hub-icon">🇸🇬</span>
-                        <div class="hub-info">
-                            <strong>Singapore</strong>
-                            <small>Asia Innovation Hub</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Why Choose Us Section -->
     <section class="section features-section" id="features">
@@ -807,143 +727,8 @@
         <span>Feedback</span>
     </a>
 
-    <!-- 3D Interactive Globe Script -->
+    <!-- Realistic Web Audio Hammer Sound Synthesizer & Strike Script -->
     <script>
-        function openCentersModal() {
-            var modal = document.getElementById('centersModal');
-            if (modal) {
-                modal.classList.add('active');
-            }
-            if (window.confetti) {
-                window.confetti({ particleCount: 110, spread: 85, origin: { y: 0.5 }, colors: ['#ff9933', '#ffffff', '#138808'] });
-            }
-        }
-
-        function closeCentersModal() {
-            var modal = document.getElementById('centersModal');
-            if (modal) {
-                modal.classList.remove('active');
-            }
-        }
-
-        function focusIndiaBranch() {
-            openCentersModal();
-        }
-
-        function init3DGlobeCanvas() {
-            var canvas = document.getElementById('globeCanvas');
-            if (!canvas) return;
-
-            var width = 160;
-            var height = 160;
-            canvas.width = width;
-            canvas.height = height;
-
-            var ctx = canvas.getContext('2d');
-            var img = new Image();
-            img.src = 'assets/globe_image.png';
-
-            var rotationAngle = 0;
-            var isDragging = false;
-            var startX = 0;
-
-            function draw2DGlobe() {
-                ctx.clearRect(0, 0, width, height);
-                var cx = width / 2;
-                var cy = height / 2;
-                var radius = Math.min(width, height) * 0.44;
-
-                // 1. Clean Atmosphere Glow (Pure Light Cyan)
-                var grad = ctx.createRadialGradient(cx, cy, radius * 0.85, cx, cy, radius * 1.15);
-                grad.addColorStop(0, 'rgba(0, 198, 255, 0.25)');
-                grad.addColorStop(1, 'rgba(0, 198, 255, 0)');
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2);
-                ctx.fill();
-
-                // 2. Pure 3D Sphere Clip (NO BLACK SHADING)
-                ctx.save();
-                ctx.beginPath();
-                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-                ctx.clip();
-
-                // Draw Image or Bright Sphere
-                if (img.complete && img.naturalWidth !== 0) {
-                    var imgW = radius * 2.4;
-                    var imgH = radius * 2.4;
-                    var offsetX = (rotationAngle % imgW);
-                    ctx.drawImage(img, cx - radius + offsetX, cy - radius, imgW, imgH);
-                    ctx.drawImage(img, cx - radius + offsetX - imgW, cy - radius, imgW, imgH);
-                } else {
-                    var sphereGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx, cy, radius);
-                    sphereGrad.addColorStop(0, '#00c6ff');
-                    sphereGrad.addColorStop(1, '#0072ff');
-                    ctx.fillStyle = sphereGrad;
-                    ctx.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
-                }
-
-                // Smooth Light Gloss Highlight (NO BLACK EFFECT)
-                var glossGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx - radius * 0.3, cy - radius * 0.3, radius * 0.9);
-                glossGrad.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
-                glossGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                ctx.fillStyle = glossGrad;
-                ctx.beginPath();
-                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.restore();
-
-                // 3. India Pin 🇮🇳 Beacon Over Globe
-                var pinAngle = (rotationAngle * 0.02) % (Math.PI * 2);
-                var pinX = cx + Math.cos(pinAngle) * (radius * 0.45);
-                var pinY = cy + Math.sin(pinAngle) * (radius * 0.25) - radius * 0.15;
-
-                // Pulsing Beacon Point
-                ctx.beginPath();
-                ctx.arc(pinX, pinY, 6 + Math.sin(Date.now() * 0.01) * 2, 0, Math.PI * 2);
-                ctx.fillStyle = '#ff0044';
-                ctx.fill();
-            }
-
-            // Drag & Spin Handlers
-            canvas.addEventListener('pointerdown', function(e) {
-                isDragging = true;
-                startX = e.clientX;
-            });
-
-            window.addEventListener('pointermove', function(e) {
-                if (!isDragging) return;
-                var dx = e.clientX - startX;
-                rotationAngle += dx * 0.8;
-                startX = e.clientX;
-            });
-
-            window.addEventListener('pointerup', function() {
-                isDragging = false;
-            });
-
-            canvas.addEventListener('click', function(e) {
-                focusIndiaBranch();
-            });
-
-            function loop() {
-                if (!isDragging) {
-                    rotationAngle += 0.8;
-                }
-                draw2DGlobe();
-                requestAnimationFrame(loop);
-            }
-            loop();
-        }
-
-        if (document.readyState === 'loading') {
-            window.addEventListener('DOMContentLoaded', init3DGlobeCanvas);
-        } else {
-            init3DGlobeCanvas();
-        }
-        window.addEventListener('load', init3DGlobeCanvas);
-
         var strikeCount = 0;
         function playHammerSoundEffect() {
             try {
@@ -1016,6 +801,6 @@
     </script>
 
     <!-- JavaScript File -->
-    <script src="script.js?v=19.0"></script>
+    <script src="script.js?v=20.0"></script>
 </body>
 </html>
