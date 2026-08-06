@@ -176,28 +176,27 @@
         </div>
     </section>
 
-    <!-- Our Global Centers Section with Pure Transparent Floating 3D Globe -->
+    <!-- Our Global Centers Section with Small Pure 3D Globe FIRST then Text -->
     <section class="section centers-section" id="centers">
-        <div class="container text-center">
-            <div class="section-header text-center" style="margin-bottom: 24px;">
+        <div class="container text-center" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- 1. Small Pure 3D Animated Globe FIRST -->
+            <div class="compact-globe-wrapper" onclick="openCentersModal()" title="Click to view all Global Centers & Main Branch!">
+                <canvas id="globeCanvas" width="160" height="160"></canvas>
+            </div>
+
+            <!-- 2. Text SECOND -->
+            <div class="section-header text-center" style="margin-top: 12px; margin-bottom: 20px;">
                 <h2 class="section-title">Where Our Centers Are</h2>
-                <p class="section-subtitle">
-                    Spin our 3D globe or click the line below to discover our Main HQ & Global Learning Hubs!
+                <p class="section-subtitle" style="margin-bottom: 18px;">
+                    Tap the globe above or click the line below to explore our Main HQ & Global Learning Hubs!
                 </p>
-            </div>
 
-            <!-- Pure Transparent 3D Floating Globe (No Dark Box) -->
-            <div class="transparent-globe-wrapper">
-                <div class="floating-globe-container" onclick="openCentersModal()" title="Click to view all Global Centers & Main Branch!">
-                    <canvas id="globeCanvas" width="420" height="420"></canvas>
+                <!-- Sleek Single-Line Interactive Click Trigger -->
+                <div class="single-line-centers-trigger" onclick="openCentersModal()" title="Click to view all Branch details">
+                    <span class="pulse-dot-cyan"></span>
+                    <span><strong>🇮🇳 Main Branch: India Headquarters</strong> • Click to view all Global Learning Hubs & Details</span>
+                    <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px; color: var(--primary-color);"></i>
                 </div>
-            </div>
-
-            <!-- Sleek Single-Line Interactive Click Trigger -->
-            <div class="single-line-centers-trigger" onclick="openCentersModal()" title="Click to view all Branch details">
-                <span class="pulse-dot-cyan"></span>
-                <span><strong>🇮🇳 Main Branch: India Headquarters</strong> • Click to view all Global Learning Hubs & Details</span>
-                <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px; color: var(--primary-color);"></i>
             </div>
         </div>
     </section>
@@ -835,9 +834,8 @@
             var canvas = document.getElementById('globeCanvas');
             if (!canvas) return;
 
-            var container = document.getElementById('globeCanvasCard');
-            var width = container ? (container.clientWidth || 450) : 450;
-            var height = container ? (container.clientHeight || 450) : 450;
+            var width = 160;
+            var height = 160;
             canvas.width = width;
             canvas.height = height;
 
@@ -853,25 +851,24 @@
                 ctx.clearRect(0, 0, width, height);
                 var cx = width / 2;
                 var cy = height / 2;
-                var radius = Math.min(width, height) * 0.42;
+                var radius = Math.min(width, height) * 0.44;
 
-                // 1. Atmosphere Cyan Glow Aura
-                var grad = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.25);
+                // 1. Clean Atmosphere Glow (Pure Light Cyan)
+                var grad = ctx.createRadialGradient(cx, cy, radius * 0.85, cx, cy, radius * 1.15);
                 grad.addColorStop(0, 'rgba(0, 198, 255, 0.25)');
-                grad.addColorStop(0.7, 'rgba(0, 198, 255, 0.08)');
-                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                grad.addColorStop(1, 'rgba(0, 198, 255, 0)');
                 ctx.fillStyle = grad;
                 ctx.beginPath();
-                ctx.arc(cx, cy, radius * 1.25, 0, Math.PI * 2);
+                ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2);
                 ctx.fill();
 
-                // 2. 3D Sphere Clip & Shadow
+                // 2. Pure 3D Sphere Clip (NO BLACK SHADING)
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(cx, cy, radius, 0, Math.PI * 2);
                 ctx.clip();
 
-                // Draw Image or Gradient Sphere
+                // Draw Image or Bright Sphere
                 if (img.complete && img.naturalWidth !== 0) {
                     var imgW = radius * 2.4;
                     var imgH = radius * 2.4;
@@ -881,18 +878,16 @@
                 } else {
                     var sphereGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx, cy, radius);
                     sphereGrad.addColorStop(0, '#00c6ff');
-                    sphereGrad.addColorStop(0.5, '#0072ff');
-                    sphereGrad.addColorStop(1, '#0f172a');
+                    sphereGrad.addColorStop(1, '#0072ff');
                     ctx.fillStyle = sphereGrad;
                     ctx.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
                 }
 
-                // 3D Inner Sphere Shadow
-                var innerShadow = ctx.createRadialGradient(cx - radius * 0.4, cy - radius * 0.4, radius * 0.5, cx, cy, radius);
-                innerShadow.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
-                innerShadow.addColorStop(0.7, 'rgba(0, 0, 0, 0.2)');
-                innerShadow.addColorStop(1, 'rgba(3, 7, 18, 0.85)');
-                ctx.fillStyle = innerShadow;
+                // Smooth Light Gloss Highlight (NO BLACK EFFECT)
+                var glossGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx - radius * 0.3, cy - radius * 0.3, radius * 0.9);
+                glossGrad.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
+                glossGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = glossGrad;
                 ctx.beginPath();
                 ctx.arc(cx, cy, radius, 0, Math.PI * 2);
                 ctx.fill();
@@ -904,23 +899,11 @@
                 var pinX = cx + Math.cos(pinAngle) * (radius * 0.45);
                 var pinY = cy + Math.sin(pinAngle) * (radius * 0.25) - radius * 0.15;
 
-                // Pulsing Ring
+                // Pulsing Beacon Point
                 ctx.beginPath();
-                ctx.arc(pinX, pinY, 14 + Math.sin(Date.now() * 0.008) * 4, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(255, 0, 68, 0.7)';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Pin Point
-                ctx.beginPath();
-                ctx.arc(pinX, pinY, 6, 0, Math.PI * 2);
+                ctx.arc(pinX, pinY, 6 + Math.sin(Date.now() * 0.01) * 2, 0, Math.PI * 2);
                 ctx.fillStyle = '#ff0044';
                 ctx.fill();
-
-                // India Label Flag
-                ctx.font = 'bold 12px Inter, sans-serif';
-                ctx.fillStyle = '#ffffff';
-                ctx.fillText('🇮🇳 India Main HQ', pinX + 10, pinY + 4);
             }
 
             // Drag & Spin Handlers
@@ -940,12 +923,10 @@
                 isDragging = false;
             });
 
-            // Single Tap on Canvas triggers India Main HQ highlight
             canvas.addEventListener('click', function(e) {
                 focusIndiaBranch();
             });
 
-            // Animation Loop
             function loop() {
                 if (!isDragging) {
                     rotationAngle += 0.8;
@@ -1028,6 +1009,6 @@
     </script>
 
     <!-- JavaScript File -->
-    <script src="script.js?v=17.0"></script>
+    <script src="script.js?v=18.0"></script>
 </body>
 </html>
