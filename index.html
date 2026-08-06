@@ -830,7 +830,7 @@
             openCentersModal();
         }
 
-        window.addEventListener('DOMContentLoaded', function() {
+        function init3DGlobeCanvas() {
             var canvas = document.getElementById('globeCanvas');
             if (!canvas) return;
 
@@ -935,7 +935,14 @@
                 requestAnimationFrame(loop);
             }
             loop();
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', init3DGlobeCanvas);
+        } else {
+            init3DGlobeCanvas();
+        }
+        window.addEventListener('load', init3DGlobeCanvas);
 
         var strikeCount = 0;
         function playHammerSoundEffect() {
@@ -1009,6 +1016,6 @@
     </script>
 
     <!-- JavaScript File -->
-    <script src="script.js?v=18.0"></script>
+    <script src="script.js?v=19.0"></script>
 </body>
 </html>
