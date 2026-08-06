@@ -176,99 +176,87 @@
         </div>
     </section>
 
-    <!-- Our Global Centers Section with 3D Animated Globe -->
+    <!-- Our Global Centers Section with Pure Transparent Floating 3D Globe -->
     <section class="section centers-section" id="centers">
-        <div class="container">
-            <div class="section-header text-center">
-                <div class="hero-badge animate-fade-in" style="margin: 0 auto 16px auto; display: inline-flex;">
-                    <span class="pulse-dot"></span>
-                    <span>🌍 Worldwide Presence & Main Branch</span>
-                </div>
+        <div class="container text-center">
+            <div class="section-header text-center" style="margin-bottom: 24px;">
                 <h2 class="section-title">Where Our Centers Are</h2>
                 <p class="section-subtitle">
-                    Spin and explore our 3D interactive globe! Tap on <strong>India 🇮🇳</strong> to highlight our Main Headquarters.
+                    Spin our 3D globe or click the line below to discover our Main HQ & Global Learning Hubs!
                 </p>
             </div>
 
-            <div class="centers-grid">
-                <!-- Interactive 3D Globe Wrapper -->
-                <div class="globe-3d-wrapper">
-                    <div class="globe-canvas-card" id="globeCanvasCard">
-                        <canvas id="globeCanvas"></canvas>
-                        <div class="globe-controls-overlay">
-                            <button class="globe-control-btn" id="spinIndiaBtn" onclick="focusIndiaBranch()" title="Spin & Focus on India (Main HQ)">
-                                <span>🇮🇳 Spin to India (Main HQ)</span>
-                            </button>
-                        </div>
-                        <div class="globe-drag-hint">
-                            <i class="fa-solid fa-hand-pointer"></i> Drag mouse or touch to rotate 360° • Tap India to view Main Branch
-                        </div>
+            <!-- Pure Transparent 3D Floating Globe (No Dark Box) -->
+            <div class="transparent-globe-wrapper">
+                <div class="floating-globe-container" onclick="openCentersModal()" title="Click to view all Global Centers & Main Branch!">
+                    <canvas id="globeCanvas" width="420" height="420"></canvas>
+                </div>
+            </div>
+
+            <!-- Sleek Single-Line Interactive Click Trigger -->
+            <div class="single-line-centers-trigger" onclick="openCentersModal()" title="Click to view all Branch details">
+                <span class="pulse-dot-cyan"></span>
+                <span><strong>🇮🇳 Main Branch: India Headquarters</strong> • Click to view all Global Learning Hubs & Details</span>
+                <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px; color: var(--primary-color);"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleek Glassmorphism Modal for Centers Details -->
+    <div class="modal" id="centersModal">
+        <div class="modal-backdrop" onclick="closeCentersModal()"></div>
+        <div class="modal-card centers-modal-card" style="max-width: 520px; text-align: left; padding: 28px;">
+            <button class="modal-close" onclick="closeCentersModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; color: #fff; cursor: pointer;">&times;</button>
+            <div class="modal-header" style="margin-bottom: 20px;">
+                <span class="hq-badge" style="display: inline-block; background: rgba(0, 198, 255, 0.15); color: #00c6ff; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">🌍 Worldwide Network</span>
+                <h3 style="font-size: 1.4rem; color: #ffffff; margin-top: 6px;">Our Global Centers & Main Headquarters</h3>
+            </div>
+            <div class="modal-body">
+                <!-- Main Branch India -->
+                <div class="hq-modal-highlight" style="background: rgba(15, 23, 42, 0.9); border: 2px solid #00c6ff; border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 16px; margin-bottom: 20px; box-shadow: 0 0 25px rgba(0, 198, 255, 0.3);">
+                    <div style="font-size: 2.8rem; line-height: 1;">🇮🇳</div>
+                    <div>
+                        <span style="background: #00c6ff; color: #0f172a; font-weight: 800; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">⭐ Main HQ</span>
+                        <h4 style="font-size: 1.25rem; margin: 4px 0; color: #ffffff;">India Headquarters</h4>
+                        <p style="font-size: 0.88rem; color: #94a3b8; margin: 0 0 6px 0;">Tech City Campus, India • Managed directly by Anustup</p>
+                        <small style="color: #00c6ff; font-weight: 600;"><i class="fa-solid fa-users"></i> 25,000+ Enrolled Learners</small>
                     </div>
                 </div>
 
-                <!-- Branch Details Info Panel -->
-                <div class="centers-info-panel">
-                    <!-- Main HQ Card -->
-                    <div class="hq-card active-hq" id="hqCardIndia">
-                        <div class="hq-header">
-                            <div class="hq-flag">🇮🇳</div>
-                            <div>
-                                <span class="hq-badge">⭐ Main Branch & Headquarters</span>
-                                <h3 class="hq-title">India Headquarters</h3>
-                            </div>
-                        </div>
-                        <p class="hq-desc">
-                            Our primary innovation hub and state-of-the-art recording studios managed directly by Anustup.
-                        </p>
-                        <ul class="hq-details-list">
-                            <li><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Tech City Campus, India</li>
-                            <li><i class="fa-solid fa-users"></i> <strong>Learners:</strong> 25,000+ Enrolled Students</li>
-                            <li><i class="fa-solid fa-headset"></i> <strong>Mentorship:</strong> Live 1-on-1 Sessions by Anustup</li>
-                        </ul>
-                        <div class="hq-action-row">
-                            <a href="#feedback" class="btn btn-primary ripple-btn">
-                                <span>Contact Main Branch</span>
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </a>
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.2px; color: #94a3b8; margin: 0 0 12px 0;">Global Satellite Hubs</h4>
+                <div class="satellite-hubs-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <div class="hub-chip">
+                        <span class="hub-icon">🇺🇸</span>
+                        <div class="hub-info">
+                            <strong>United States</strong>
+                            <small>San Francisco Hub</small>
                         </div>
                     </div>
-
-                    <!-- Global Satellite Branches Grid -->
-                    <div class="satellite-hubs-title">Global Learning Hubs</div>
-                    <div class="satellite-hubs-grid">
-                        <div class="hub-chip">
-                            <span class="hub-icon">🇺🇸</span>
-                            <div class="hub-info">
-                                <strong>United States</strong>
-                                <small>San Francisco Hub</small>
-                            </div>
+                    <div class="hub-chip">
+                        <span class="hub-icon">🇬🇧</span>
+                        <div class="hub-info">
+                            <strong>United Kingdom</strong>
+                            <small>London Studio Hub</small>
                         </div>
-                        <div class="hub-chip">
-                            <span class="hub-icon">🇬🇧</span>
-                            <div class="hub-info">
-                                <strong>United Kingdom</strong>
-                                <small>London Studio Hub</small>
-                            </div>
+                    </div>
+                    <div class="hub-chip">
+                        <span class="hub-icon">🇦🇪</span>
+                        <div class="hub-info">
+                            <strong>UAE</strong>
+                            <small>Dubai Tech Hub</small>
                         </div>
-                        <div class="hub-chip">
-                            <span class="hub-icon">🇦🇪</span>
-                            <div class="hub-info">
-                                <strong>UAE</strong>
-                                <small>Dubai Tech Hub</small>
-                            </div>
-                        </div>
-                        <div class="hub-chip">
-                            <span class="hub-icon">🇸🇬</span>
-                            <div class="hub-info">
-                                <strong>Singapore</strong>
-                                <small>Asia Innovation Hub</small>
-                            </div>
+                    </div>
+                    <div class="hub-chip">
+                        <span class="hub-icon">🇸🇬</span>
+                        <div class="hub-info">
+                            <strong>Singapore</strong>
+                            <small>Asia Innovation Hub</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Why Choose Us Section -->
     <section class="section features-section" id="features">
@@ -822,21 +810,25 @@
 
     <!-- 3D Interactive Globe Script -->
     <script>
-        function focusIndiaBranch() {
-            var card = document.getElementById('hqCardIndia');
-            if (card) {
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                card.style.transform = 'scale(1.05)';
-                card.style.borderColor = '#00c6ff';
-                card.style.boxShadow = '0 0 35px rgba(0, 198, 255, 0.6)';
-                setTimeout(function() {
-                    card.style.transform = 'scale(1)';
-                    card.style.boxShadow = '0 10px 30px rgba(0, 198, 255, 0.2)';
-                }, 1200);
+        function openCentersModal() {
+            var modal = document.getElementById('centersModal');
+            if (modal) {
+                modal.classList.add('active');
             }
             if (window.confetti) {
-                window.confetti({ particleCount: 100, spread: 80, origin: { y: 0.5 }, colors: ['#ff9933', '#ffffff', '#138808'] });
+                window.confetti({ particleCount: 110, spread: 85, origin: { y: 0.5 }, colors: ['#ff9933', '#ffffff', '#138808'] });
             }
+        }
+
+        function closeCentersModal() {
+            var modal = document.getElementById('centersModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        function focusIndiaBranch() {
+            openCentersModal();
         }
 
         window.addEventListener('DOMContentLoaded', function() {
@@ -1036,6 +1028,6 @@
     </script>
 
     <!-- JavaScript File -->
-    <script src="script.js?v=15.0"></script>
+    <script src="script.js?v=17.0"></script>
 </body>
 </html>
